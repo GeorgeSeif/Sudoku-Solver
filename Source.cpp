@@ -64,11 +64,11 @@ bool used_in_col(int grid[DIM][DIM], int col, int num)
 
 // Returns a boolean which indicates whether any assigned entry
 // within the specified 3x3 box matches the given number. 
-bool used_in_box(int grid[DIM][DIM], int box_start_rpw, int box_start_col, int num)
+bool used_in_box(int grid[DIM][DIM], int box_start_row, int box_start_col, int num)
 {
 	for (int row = 0; row < 3; row++)
 		for (int col = 0; col < 3; col++)
-			if (grid[row + box_start_rpw][col + box_start_col] == num) 
+			if (grid[row + box_start_row][col + box_start_col] == num) 
 			{
 				return true;
 			}
@@ -130,9 +130,9 @@ bool solve_soduko(int grid[DIM][DIM])
 			// Do the same thing again recursively. If we go 
 			// through all of the recursions, and in the end 
 			// return true, then all of our number placements 
-			// on the Soduko grid are valid and we have fully
+			// on the Sudoku grid are valid and we have fully
 			// solved it
-			if (solve_soduko(grid))
+			if (solve_sudoku(grid))
 			{
 				return true;
 			}
@@ -167,13 +167,13 @@ int main()
 
 	print_grid(grid);
 
-	if (true == solve_soduko(grid))
+	if (true == solve_sudoku(grid))
 	{
 		print_grid(grid);
 	}
 	else
 	{
-		cout << "No solution exists for the given Soduko" << endl << endl;
+		cout << "No solution exists for the given Sudoku" << endl << endl;
 	}
 
 	return 0;
