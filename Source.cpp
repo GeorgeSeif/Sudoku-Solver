@@ -104,9 +104,9 @@ std::pair<int, int> get_unassigned_location(int grid[DIM][DIM])
 // Takes a partially filled-in grid and attempts to assign values to
 // all unassigned locations in such a way to meet the requirements
 // for Sudoku solution (non-duplication across rows, columns, and boxes) 
-bool solve_soduko(int grid[DIM][DIM])
+bool solve_sudoku(int grid[DIM][DIM])
 {
-	// If the Soduko grid has been filled, we are done
+	// If the Sudoku grid has been filled, we are done
 	if (GRID_FULL == get_unassigned_location(grid))
 	{
 		return true; 
@@ -132,7 +132,7 @@ bool solve_soduko(int grid[DIM][DIM])
 			// return true, then all of our number placements 
 			// on the Soduko grid are valid and we have fully
 			// solved it
-			if (solve_soduko(grid))
+			if (solve_sudoku(grid))
 			{
 				return true;
 			}
@@ -167,13 +167,13 @@ int main()
 
 	print_grid(grid);
 
-	if (true == solve_soduko(grid))
+	if (true == solve_sudoku(grid))
 	{
 		print_grid(grid);
 	}
 	else
 	{
-		cout << "No solution exists for the given Soduko" << endl << endl;
+		cout << "No solution exists for the given Sudoku" << endl << endl;
 	}
 
 	return 0;
